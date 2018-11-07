@@ -17,6 +17,7 @@ body {
 .burger-image-container {
 	width: 200px; 
 	height: 200px;
+	margin: 5px; 
 }
 
 .title {
@@ -118,4 +119,32 @@ h1 {
 	color:black;
 	background: rgba(255,255,255, 0.5);
 	padding: 1em;
+}
+
+.wrapper {
+	display: grid;
+	grid-gap: 10px;
+	grid-template-columns: auto auto;
+	color: #444;
+}
+
+.box {
+	margin: auto auto;
+	text-align: center;
+	color: #fff;
+	border-radius: 5px;
+	padding: 20px;
+	font-size: auto;
+	display: flex;
+	flex-direction: column;
+}
+
+.a {
+	grid-column: 1;
+}
+.b {
+	grid-column: 2 ;
+}
+.c {
+	grid-column: 3 ;
 }
