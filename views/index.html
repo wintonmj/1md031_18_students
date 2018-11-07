@@ -3,98 +3,116 @@
 
 <head>
 	<link rel="stylesheet" href="css/deli-very.css">
+	<script src="js/deli-very.js" defer></script>
+	<script src="js/js_script.js" defer></script>
+	<script src="https://vuejs.org/js/vue.js"></script>
+	<script src="js/vue_script.js" defer></script>
+
+
+	<!--two scripts below added by tutor from repo https://github.com/attack68/1md031_18_students/commit/5e8dd909ca2169447407dfd769d056cc22d47a44-->
+	<script src="/vue/vue.js" defer></script>
+	<script src="/socket.io/socket.io.js" defer></script>
 
 	<title>Page title shown in window title</title>
 	<meta charset="utf-8" />
 </head>
 
 <body>
-	<section class="title">
-		<img class="title-image" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3276632.jpg">
-		<h1 class="title-text"> Välkommen till Burger Online </h1>
-	</section>
+	<div id="vue-container">
+		<section class="title">
+			<img class="title-image" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3276632.jpg">
+			<h1 class="title-text"> Välkommen till Burger Online </h1>
+		</section>
 
-	<section class="burger-section">
-		<h2>
-			Select Burger
-		</h2>
-		<p>Here you can choose the burger you would like.</p>
+		<section class="burger-section" id="myID">
+			<h2 >
+				Select Burger
+			</h2>
+			<p>Here you can choose the burger you would like.</p>
 
-		<div class="wrapper">
-			<div class="box a">
-				<h4>B1</h4>
-				<div class="burger-image-container">
-					<img class="burger-image" src="http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg?itok=zGk5pjcI">
+			<div class="wrapper">
+				<div class="box a">
+					<h4> {{ burgerName }} </h4>
+					<div class="burger-image-container">
+						<img class="burger-image" src="http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg?itok=zGk5pjcI">
+					</div>
+					<li>One Beef Burger Patty</li>
+					<li>Veggies</li>
+					<li><span id="dietry">lactose </span>Cheese</li>
+					<li>Chips</li>
 				</div>
-				<li>One Beef Burger Patty</li>
-				<li>Veggies</li>
-				<li><span id="dietry">lactose </span>Cheese</li>
-				<li>Chips</li>
+				<div class="box b">
+					<h4> B2 </h4>
+					<div class="burger-image-container">
+						<img class="burger-image" src="https://i2.wp.com/www.mercurynews.com/wp-content/uploads/2016/08/20150120__SJM-HALALBURG-01211.jpg?resize=620%2C583&amp;ssl=1"
+						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+					</div>
+					<li>One Beef Burger Patty</li>
+					<li>Veggies</li>
+					<li><span id="dietry">lactose </span>Cheese</li>
+					<li>Chips</li>
+				</div>
+				<div class="box c">
+					<h4>B3</h4>
+					<div class="burger-image-container">
+						<img class="burger-image" class="irc_mi" src="https://aht.seriouseats.com/images/2012/09/20120918-222541-checkers-rallys-fry-lovers-burger-primary.jpg"
+						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+					</div>
+					<li>Two Beef Burger Patties</li>
+					<li>Veggies</li>
+					<li><span id="dietry">lactose </span>Cheese</li>
+				</div>
 			</div>
-			<div class="box b">
-				<h4>B2</h4>
-				<div class="burger-image-container">
-					<img class="burger-image" src="https://i2.wp.com/www.mercurynews.com/wp-content/uploads/2016/08/20150120__SJM-HALALBURG-01211.jpg?resize=620%2C583&amp;ssl=1"
-					 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+		</section>
+		<section class="customer-info">
+			<h2>
+				Customer Info
+			</h2>
+			<p>Here you can see your details</p>
+
+			<section id="contact">
+				<form>
+					<p>
+						<label for="fullname">Full name</label><br>
+						<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+					</p>
+					<p>
+						<label for="email">Email</label><br>
+						<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+					</p>
+					<p>
+						<label for="Street">Street</label><br>
+						<input type="text" id="street" name="ln" placeholder="Street name">
+					</p>
+					<p>
+						<label for="House">House</label><br>
+						<input type="number" id="house" name="ln" placeholder="House number">
+					</p>
+					<p>
+						<label for="recipient">Recipient</label><br>
+						<select id="recipient" name="rcp">
+							<option selected="selected">Credit</option>
+							<option>Cash</option>
+							<option>Debit</option>
+							<option>Split</option>
+						</select>
+					</p>
+					<input type="radio" name="gender" value="male" checked>Male<br>
+					<input type="radio" name="gender" value="female">Female<br>
+					<input type="radio" name="gender" value="other">Other<br>
+					<button type="submit">Order</button>
+				</form>
+			</section>
+		</section>
+
+		<div class="view-box">
+			<div id="dots" v-on:click="addOrder">
+				<div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+					{{key}}
 				</div>
-				<li>One Beef Burger Patty</li>
-				<li>Veggies</li>
-				<li><span id="dietry">lactose </span>Cheese</li>
-				<li>Chips</li>
-			</div>
-			<div class="box c">
-				<h4>B3</h4>
-				<div class="burger-image-container">
-					<img class="burger-image" class="irc_mi" src="https://aht.seriouseats.com/images/2012/09/20120918-222541-checkers-rallys-fry-lovers-burger-primary.jpg"
-					 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
-				</div>
-				<li>Two Beef Burger Patties</li>
-				<li>Veggies</li>
-				<li><span id="dietry">lactose </span>Cheese</li>
 			</div>
 		</div>
-	</section>
-	<section class="customer-info">
-		<h2>
-			Customer Info
-		</h2>
-		<p>Here you can see your details</p>
-
-		<section id="contact">
-			<form>
-				<p>
-					<label for="fullname">Full name</label><br>
-					<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
-				</p>
-				<p>
-					<label for="email">Email</label><br>
-					<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
-				</p>
-				<p>
-					<label for="Street">Street</label><br>
-					<input type="text" id="street" name="ln" placeholder="Street name">
-				</p>
-				<p>
-					<label for="House">House</label><br>
-					<input type="number" id="house" name="ln" placeholder="House number">
-				</p>
-				<p>
-					<label for="recipient">Recipient</label><br>
-					<select id="recipient" name="rcp">
-						<option selected="selected">Credit</option>
-						<option>Cash</option>
-						<option>Debit</option>
-						<option>Split</option>
-					</select>
-				</p>
-				<input type="radio" name="gender" value="male" checked>Male<br>
-				<input type="radio" name="gender" value="female">Female<br>
-				<input type="radio" name="gender" value="other">Other<br>
-				<button type="submit">Order</button>
-			</form>
-		</section>
-	</section>
-	<!--a href="/map">View map</a-->
+	</div>
 	<hr>
 	<footer>
 		This is the footer
