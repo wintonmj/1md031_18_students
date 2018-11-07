@@ -1,13 +1,116 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>DELI-VERY</title>
 	<link rel="stylesheet" href="css/deli-very.css">
+	
+	<title>Page title shown in window title</title>
+	<meta charset="utf-8" />
 </head>
+
 <body>
-	<h1>
-		Hello world!
-	</h1>
-	<a href="/map">View map</a>
+	<section class="title">
+		<img class="title-image" src="https://d2gg9evh47fn9z.cloudfront.net/800px_COLOURBOX3276632.jpg">
+		<h1 class="title-text"> Välkommen till Burger Online </h1>
+	</section>
+
+	<section class="burger-section">
+		<h2>
+			Select Burger
+		</h2>
+		<p>Here you can choose the burger you would like.</p>
+		<table>
+			<thead>
+				<th>B1</th>
+				<th>B2</th>
+				<th>B3</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="burger-image-container">
+					<img class="burger-image" src="http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg?itok=zGk5pjcI">
+					</td>
+					<td class="burger-image-container">
+						<img class="burger-image" src="https://i2.wp.com/www.mercurynews.com/wp-content/uploads/2016/08/20150120__SJM-HALALBURG-01211.jpg?resize=620%2C583&amp;ssl=1"
+						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+					</td>
+					<td class="burger-image-container">
+						<img class="burger-image" class="irc_mi" src="https://aht.seriouseats.com/images/2012/09/20120918-222541-checkers-rallys-fry-lovers-burger-primary.jpg"
+						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
+					</td>
+				</tr>
+				<tr class="ingredients">
+					<!-- Burger descriptions -->
+					<td>
+						<ul>
+							<li>One Beef Burger Patty</li>
+							<li>Veggies</li>
+							<li><span id="dietry">lactose </span>Cheese</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>Teo Beef Burger Patties</li>
+							<li>Veggies</li>
+							<li><span id="dietry">lactose </span>Cheese</li>
+						</ul>
+					</td>
+					<td>
+						<ul>
+							<li>One Beef Burger Patty</li>
+							<li>Veggies</li>
+							<li><span id="dietry">lactose </span>Cheese</li>
+							<li>Chips</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<section class="customer-info">
+		<h2>
+			Customer Info
+		</h2>
+		<p>Here you can see your details</p>
+
+		<section id="contact">
+			<form>
+				<p>
+					<label for="fullname">Full name</label><br>
+					<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+				</p>
+				<p>
+					<label for="email">Email</label><br>
+					<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+				</p>
+				<p>
+					<label for="Street">Street</label><br>
+					<input type="text" id="street" name="ln" placeholder="Street name">
+				</p>
+				<p>
+					<label for="House">House</label><br>
+					<input type="number" id="house" name="ln" placeholder="House number">
+				</p>
+				<p>
+					<label for="recipient">Recipient</label><br>
+					<select id="recipient" name="rcp">
+						<option selected="selected">Credit</option>
+						<option>Cash</option>
+						<option>Debit</option>
+						<option>Split</option>
+					</select>
+				</p>
+				<input type="radio" name="gender" value="male" checked>Male<br>
+				<input type="radio" name="gender" value="female">Female<br>
+				<input type="radio" name="gender" value="other">Other<br>
+				<button type="submit">Order</button>
+			</form>
+		</section>
+	</section>
+	<!--a href="/map">View map</a-->
+	<hr>
+	<footer>
+		This is the footer
+	</footer>
 </body>
 </html>
