@@ -24,48 +24,32 @@
 			<h1 class="title-text"> Välkommen till Burger Online </h1>
 		</section>
 
-		<section  class="burger-section" v-bind:title="burgerName" id="myID">
+		<section class="burger-section" v-bind:title="burgerName" id="myID">
 			<h2>
 				Select Burger
 			</h2>
 			<p>Here you can choose the burger you would like.</p>
 
 			<div class="wrapper">
-				<div class="box a">
-					<input v-model="burgerName">
-					<h4> 
-						{{ burgerName }} 
+				<div class="box" v-for="burger in burgerName" v-if="burger.stock > 0">
+					<h4>
+						{{ burger.name }}
 					</h4>
 					<div class="burger-image-container">
-						<img class="burger-image" src="http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg?itok=zGk5pjcI">
+						<img class="burger-image" :src=burger.image>
 					</div>
-					<li>One Beef Burger Patty</li>
-					<li>Veggies</li>
-					<li><span id="dietry">lactose </span>Cheese</li>
-					<li>Chips</li>
-				</div>
-				<div class="box b">
-					<h4> B2 </h4>
-					<div class="burger-image-container">
-						<img class="burger-image" src="https://i2.wp.com/www.mercurynews.com/wp-content/uploads/2016/08/20150120__SJM-HALALBURG-01211.jpg?resize=620%2C583&amp;ssl=1"
-						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
-					</div>
-					<li>One Beef Burger Patty</li>
-					<li>Veggies</li>
-					<li><span id="dietry">lactose </span>Cheese</li>
-					<li>Chips</li>
-				</div>
-				<div class="box c">
-					<h4>B3</h4>
-					<div class="burger-image-container">
-						<img class="burger-image" class="irc_mi" src="https://aht.seriouseats.com/images/2012/09/20120918-222541-checkers-rallys-fry-lovers-burger-primary.jpg"
-						 onload="typeof google==='object'&amp;&amp;google.aft&amp;&amp;google.aft(this)">
-					</div>
-					<li>Two Beef Burger Patties</li>
-					<li>Veggies</li>
-					<li><span id="dietry">lactose </span>Cheese</li>
+					<ul>
+						<li>{{ burger.kCal }}</li>
+						<li v-if="burger.gluten"> 
+								Contains <span id="dietry"> gluten </span>
+						</li>
+						<li v-if="burger.lactose"> 
+								Contains <span id="dietry"> lactose </span>
+						</li>
+					</ul>
 				</div>
 			</div>
+
 		</section>
 		<section class="customer-info">
 			<h2>
