@@ -9,6 +9,12 @@ function MenuItem(n, kC, g, l) {
 }
 
 // Objects are then instantiated using the new keyword
-var item1 = new MenuItem('Maike', 'Paetzel', 'Uppsala', 'PhD Student');
 
-console.log( item1.nameAndKCal() ); // Output: Maike Paetzel
+var burgers = [ 
+    new MenuItem('Burger 1', '2.4kCal', 'Gluten', 'Lactose'), 
+    new MenuItem('Burger 2', '1.7kCal', 'Gluten Free', 'Lactose'), 
+    new MenuItem('Burger 3', '1.9kCal', 'Gluten', 'Lactose'),
+    new MenuItem('Milkshake', '1.5kCal', 'Gluten', 'Lactose'),
+    new MenuItem('Smoothie', '0.7kCal', 'Gluten', 'Lactose Free')
+]
+

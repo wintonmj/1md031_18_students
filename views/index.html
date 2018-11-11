@@ -24,15 +24,18 @@
 			<h1 class="title-text"> Välkommen till Burger Online </h1>
 		</section>
 
-		<section class="burger-section" id="myID">
-			<h2 >
+		<section  class="burger-section" v-bind:title="burgerName" id="myID">
+			<h2>
 				Select Burger
 			</h2>
 			<p>Here you can choose the burger you would like.</p>
 
 			<div class="wrapper">
 				<div class="box a">
-					<h4> {{ burgerName }} </h4>
+					<input v-model="burgerName">
+					<h4> 
+						{{ burgerName }} 
+					</h4>
 					<div class="burger-image-container">
 						<img class="burger-image" src="http://www.designindaba.com/sites/default/files/styles/scaledlarge/public/node/news/23566/sonic-burger.jpg?itok=zGk5pjcI">
 					</div>

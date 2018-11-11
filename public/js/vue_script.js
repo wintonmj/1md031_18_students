@@ -5,3 +5,7 @@ var vm = new Vue({
         burgerName: 'Burger Name 1'
     }
 })
+
+burgers.forEach(element => {
+    console.log(element.nameAndKCal() );
+});
