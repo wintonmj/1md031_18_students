@@ -3,6 +3,7 @@
 
 <head>
 	<link rel="stylesheet" href="css/deli-very.css">
+	<script type="text/javascript" src="js/menu.js"></script>
 	<script src="js/deli-very.js" defer></script>
 	<script src="js/js_script.js" defer></script>
 	<script src="https://vuejs.org/js/vue.js"></script>
@@ -24,7 +25,7 @@
 			<h1 class="title-text"> Välkommen till Burger Online </h1>
 		</section>
 
-		<section class="burger-section" v-bind:title="burgerName" id="myID">
+		<section class="burger-section" v-bind:title= "burgerName" id="myID">
 			<h2>
 				Select Burger
 			</h2>
@@ -35,16 +36,14 @@
 					<h4>
 						{{ burger.name }}
 					</h4>
-					<div class="burger-image-container">
-						<img class="burger-image" :src=burger.image>
-					</div>
+					<img class="burger-image" :src=burger.image>
 					<ul>
 						<li>{{ burger.kCal }}</li>
-						<li v-if="burger.gluten"> 
-								Contains <span id="dietry"> gluten </span>
+						<li v-if="burger.gluten">
+							Contains <span id="dietry"> gluten </span>
 						</li>
-						<li v-if="burger.lactose"> 
-								Contains <span id="dietry"> lactose </span>
+						<li v-if="burger.lactose">
+							Contains <span id="dietry"> lactose </span>
 						</li>
 					</ul>
 				</div>
@@ -87,7 +86,10 @@
 					<input type="radio" name="gender" value="male" checked>Male<br>
 					<input type="radio" name="gender" value="female">Female<br>
 					<input type="radio" name="gender" value="other">Other<br>
-					<button type="submit">Order</button>
+
+					<div id="orders">
+						<button v-on:click="markDone(key)">Order</button>
+					</div>
 				</form>
 			</section>
 		</section>

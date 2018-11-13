@@ -9,3 +9,15 @@ var vm = new Vue({
 burgers.forEach(element => {
     console.log(element.nameAndKCal() );
 });
+
+new Vue({
+    el: '#orders',
+    data: {
+        key: [] 
+    }, 
+    methods: {
+        markDone: function() {
+         console.log("ordering!")
+        }   
+    }
+});
