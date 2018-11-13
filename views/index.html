@@ -50,6 +50,7 @@
 			</div>
 
 		</section>
+
 		<section class="customer-info">
 			<h2>
 				Customer Info
@@ -57,10 +58,10 @@
 			<p>Here you can see your details</p>
 
 			<section id="contact">
-				<form>
+				<form @submit.prevent="handleSubmit">
 					<p>
 						<label for="fullname">Full name</label><br>
-						<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						<input v-model="key[0]" type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
 					</p>
 					<p>
 						<label for="email">Email</label><br>

@@ -10,14 +10,29 @@ burgers.forEach(element => {
     console.log(element.nameAndKCal() );
 });
 
-new Vue({
+var formFields = new Vue({
     el: '#orders',
     data: {
         key: [] 
     }, 
+
     methods: {
-        markDone: function() {
-         console.log("ordering!")
-        }   
+        markDone: function(key) {
+         console.log("key!" + key)
+        },    
+
+        handleSubmit() {
+            console.log("The User Name is: " + user.name); 
+        }
+    }, 
+
+    data() {
+        return {
+          user: {
+            email: '',
+            name: '',
+            password: ''
+          }
+        }
     }
 });
