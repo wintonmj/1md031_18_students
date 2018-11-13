@@ -12,25 +12,22 @@ body {
 	display: grid;
 	grid-gap: 10px;
 	grid-template-columns: auto auto auto ;
-	color: #444;
 }
 
 .box {
-	margin: auto auto;
+	margin: auto 0px;
 	text-align: center;
 	color: #fff;
 	border-radius: 5px;
 	padding: 20px;
-	font-size: auto;
 	display: flex;
 	flex-direction: column;
 }
 
 .burger-image {
-	width: 200px; 
+	width: 70%; 
 	height: 200px;
-	margin: 1%; 
-	alt: "Burger Image";
+	margin: auto; 
 }
 
 .title {
