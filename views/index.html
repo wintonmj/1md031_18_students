@@ -2,18 +2,14 @@
 <html>
 
 <head>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="/vue/vue.js"></script>
+	<script src="js/js_script.js"></script>
 	<link rel="stylesheet" href="css/deli-very.css">
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script src="js/deli-very.js" defer></script>
-	<script src="js/js_script.js" defer></script>
 	<script src="https://vuejs.org/js/vue.js"></script>
-	<script src="js/vue_script.js" defer></script>
-
-
-	<!--two scripts below added by tutor from repo https://github.com/attack68/1md031_18_students/commit/5e8dd909ca2169447407dfd769d056cc22d47a44-->
-	<script src="/vue/vue.js" defer></script>
-	<script src="/socket.io/socket.io.js" defer></script>
-
+	
 	<title>Page title shown in window title</title>
 	<meta charset="utf-8" />
 </head>
@@ -57,15 +53,17 @@
 			</h2>
 			<p>Here you can see your details</p>
 
-			<section id="contact">
+			<section id="orders">
 				<form @submit.prevent="handleSubmit">
 					<p>
 						<label for="fullname">Full name</label><br>
-						<input v-model="key[0]" type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
 					</p>
 					<p>
 						<label for="email">Email</label><br>
-						<input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+						<input v-model="orderObj.email" type="email" id="email" name="em" required="required" placeholder="E-mail address">
+						
+						{{ orderObj.email }}
 					</p>
 					<p>
 						<label for="Street">Street</label><br>
@@ -89,7 +87,7 @@
 					<input type="radio" name="gender" value="other">Other<br>
 
 					<div id="orders">
-						<button v-on:click="markDone(key)">Order</button>
+						<button v-on:click="markDone('string')">Order</button>
 					</div>
 				</form>
 			</section>
