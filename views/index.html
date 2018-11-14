@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="js/menu.js"></script>
 	<script src="js/deli-very.js" defer></script>
 	<script src="https://vuejs.org/js/vue.js"></script>
-	
+
 	<title>Page title shown in window title</title>
 	<meta charset="utf-8" />
 </head>
@@ -21,7 +21,7 @@
 			<h1 class="title-text"> Välkommen till Burger Online </h1>
 		</section>
 
-		<section class="burger-section" v-bind:title= "burgerName" id="myID">
+		<section class="burger-section" v-bind:title="burgerName" id="myID">
 			<h2>
 				Select Burger
 			</h2>
@@ -63,19 +63,11 @@
 				<form @submit.prevent="handleSubmit">
 					<p>
 						<label for="fullname">Full name</label><br>
-						<input v-model="orderObj.name"type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						<input v-model="orderObj.name" type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
 					</p>
 					<p>
 						<label for="email">Email</label><br>
 						<input v-model="orderObj.email" type="email" id="email" name="em" required="required" placeholder="E-mail address">
-					</p>
-					<p>
-						<label for="Street">Street</label><br>
-						<input v-model="orderObj.street" type="text" id="street" name="ln" placeholder="Street name">
-					</p>
-					<p>
-						<label for="House">House</label><br>
-						<input v-model="orderObj.houseNumber" type="number" id="house" name="ln" placeholder="House number">
 					</p>
 					<p>
 						<label for="recipient">Recipient</label><br>
@@ -89,8 +81,17 @@
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Male" checked>Male<br>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Female">Female<br>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Undisclosed">Undisclosed<br>
+
+					<div class="view-box">
+						<div id="dots" v-on:click="displayOrder">
+							<div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+								{{key}}
+							</div>
+						</div>
+					</div>
+
 					<div id="orders">
-						<button v-on:click="markDone()">Order</button>
+						<button v-on:click="addOrder">Order</button>
 					</div>
 				</form>
 			</section>
@@ -100,25 +101,17 @@
 			<h4>Order Confirmation</h4>
 			<h5>Customer Details</h5>
 			<!-- Give ID's and change them to a one-way binding using native JS-->
-				<p>Name: {{ orderObj.name }} </p>
-				<p>Email: {{ orderObj.email }} </p>
-				<p>Deliver to: {{ orderObj.houseNumber }} {{ orderObj.street }} </p>
-				<p>Payment Method: {{ orderObj.payment }} </p>
-				<p>Gender: {{ orderObj.gender }} </p>
+			<p>Name: {{ orderObj.name }} </p>
+			<p>Email: {{ orderObj.email }} </p>
+			<p>Deliver to: {{ orderObj.houseNumber }} {{ orderObj.street }} </p>
+			<p>Payment Method: {{ orderObj.payment }} </p>
+			<p>Gender: {{ orderObj.gender }} </p>
 			<h5>Order Summary</h5>
-					<ul v-for="burger in orderObj.checkedBurgers">
-						<li>{{burger}}</li>
-					</ul>
+			<ul v-for="burger in orderObj.checkedBurgers">
+				<li>{{burger}}</li>
+			</ul>
 
 		</section>
-
-		<div class="view-box">
-			<div id="dots" v-on:click="addOrder">
-				<div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-					{{key}}
-				</div>
-			</div>
-		</div>
 	</div>
 	<hr>
 	<footer>

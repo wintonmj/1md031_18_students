@@ -15,9 +15,7 @@ var vm = new Vue({
     orderObj: {
       name: '',
       email: '',
-      gender: 'Undisclosed',
-      street: '',
-      houseNumber: '', 
+      gender: 'Undisclosed', 
       payment: 'Credit',
       checkedBurgers: []
     },
@@ -39,7 +37,7 @@ var vm = new Vue({
      },    
  
      handleSubmit() {
-        if(this.orderObj.checkedBurgers.length < 1){
+        if(this.orderObj.checkedBurgers.length === 0){
           console.log("Select at least one burger.")
           event.preventDefault();
           return false;
@@ -53,6 +51,10 @@ var vm = new Vue({
         return Math.max(last, next);
       }, 0);
       return lastOrder + 1;
+    },
+    displayOrder: function(event){
+      this.markDone()
+      console.log("display order");
     },
     addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
