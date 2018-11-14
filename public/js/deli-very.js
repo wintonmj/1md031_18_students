@@ -1,23 +1,27 @@
 /*jslint es5:true, indent: 2 */
 /*global Vue, io */
-/* exported vm */
-'use strict';
-var socket = io();
+/* exported vm 
 
 burgers.forEach(element => {
   console.log(element.nameAndKCal() );
-});
+});*/
+'use strict';
+var socket = io();
 
 var vm = new Vue({
   el: '#vue-container',
   data: {
     orders: {},
     orderObj: {
-      email: '',
       name: '',
-      password: ''
+      email: '',
+      gender: 'Undisclosed',
+      street: '',
+      houseNumber: '', 
+      payment: 'Credit'
     },
-    burgerName: burgers
+    burgerName: burgers,
+    recievedOrder: false
   },
   created: function () {
     socket.on('initialize', function (data) {
@@ -30,11 +34,13 @@ var vm = new Vue({
   },
   methods: {
     markDone: function() {
-      console.log(this.orederObj)
+      console.log(this.orderObj)
      },    
  
      handleSubmit() {
-         console.log("The User Name is: " + user.name); 
+         console.log("The User Name is: " + this.orderObj.name);
+         console.log("Order placed.");
+         this.recievedOrder = true;  
      },
     getNext: function () {
       var lastOrder = Object.keys(this.orders).reduce(function (last, next) {

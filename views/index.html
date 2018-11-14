@@ -57,40 +57,54 @@
 				<form @submit.prevent="handleSubmit">
 					<p>
 						<label for="fullname">Full name</label><br>
-						<input type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						<input v-model="orderObj.name"type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						{{ orderObj.name }}
 					</p>
 					<p>
 						<label for="email">Email</label><br>
 						<input v-model="orderObj.email" type="email" id="email" name="em" required="required" placeholder="E-mail address">
-						
 						{{ orderObj.email }}
 					</p>
 					<p>
 						<label for="Street">Street</label><br>
-						<input type="text" id="street" name="ln" placeholder="Street name">
+						<input v-model="orderObj.street" type="text" id="street" name="ln" placeholder="Street name">
+						{{ orderObj.street }}
 					</p>
 					<p>
 						<label for="House">House</label><br>
-						<input type="number" id="house" name="ln" placeholder="House number">
+						<input v-model="orderObj.houseNumber" type="number" id="house" name="ln" placeholder="House number">
+						{{ orderObj.houseNumber }}
 					</p>
 					<p>
 						<label for="recipient">Recipient</label><br>
-						<select id="recipient" name="rcp">
+						<select v-model="orderObj.payment" id="recipient" name="rcp">
 							<option selected="selected">Credit</option>
 							<option>Cash</option>
 							<option>Debit</option>
 							<option>Split</option>
 						</select>
+						{{ orderObj.payment }}
 					</p>
-					<input type="radio" name="gender" value="male" checked>Male<br>
-					<input type="radio" name="gender" value="female">Female<br>
-					<input type="radio" name="gender" value="other">Other<br>
-
+					<input v-model="orderObj.gender" type="radio" name="gender" value="Male" checked>Male<br>
+					<input v-model="orderObj.gender" type="radio" name="gender" value="Female">Female<br>
+					<input v-model="orderObj.gender" type="radio" name="gender" value="Undisclosed">Undisclosed<br>
+					{{ orderObj.gender }}
 					<div id="orders">
 						<button v-on:click="markDone('string')">Order</button>
 					</div>
 				</form>
 			</section>
+		</section>
+
+		<section v-if="recievedOrder === true">
+			<!--h4>Order Confirmation</h4>
+			<h5>Customer Details</h5>
+				Name: {{}}
+				Email: {{}}
+				Deliver to {{}} {{}}
+				Payment Method {{}}
+				Gender: {{}}
+			<h5>Order Summary</h5-->
 		</section>
 
 		<div class="view-box">
