@@ -18,7 +18,8 @@ var vm = new Vue({
       gender: 'Undisclosed',
       street: '',
       houseNumber: '', 
-      payment: 'Credit'
+      payment: 'Credit',
+      checkedBurgers: []
     },
     burgerName: burgers,
     recievedOrder: false
@@ -38,6 +39,11 @@ var vm = new Vue({
      },    
  
      handleSubmit() {
+        if(this.orderObj.checkedBurgers.length < 1){
+          console.log("Select at least one burger.")
+          event.preventDefault();
+          return false;
+        }
          console.log("The User Name is: " + this.orderObj.name);
          console.log("Order placed.");
          this.recievedOrder = true;  

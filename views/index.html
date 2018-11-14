@@ -42,8 +42,14 @@
 							Contains <span id="dietry"> lactose </span>
 						</li>
 					</ul>
+					<div>
+						<input type="checkbox" :id="burger.name" :value="burger.name" v-model="orderObj.checkedBurgers">
+						<label :for="burger.name">{{ burger.name }}</label>
+					</div>
 				</div>
 			</div>
+
+			{{orderObj.checkedBurgers}}
 
 		</section>
 
@@ -84,7 +90,7 @@
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Female">Female<br>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Undisclosed">Undisclosed<br>
 					<div id="orders">
-						<button v-on:click="markDone('string')">Order</button>
+						<button v-on:click="markDone()">Order</button>
 					</div>
 				</form>
 			</section>
@@ -100,6 +106,8 @@
 				<p>Payment Method: {{ orderObj.payment }} </p>
 				<p>Gender: {{ orderObj.gender }} </p>
 			<h5>Order Summary</h5>
+				<div class="box" v-for="burger in orderObj.checkedBurgers" v-if="burger.stock > 0"></div>
+
 		</section>
 
 		<div class="view-box">
