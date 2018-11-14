@@ -106,7 +106,9 @@
 				<p>Payment Method: {{ orderObj.payment }} </p>
 				<p>Gender: {{ orderObj.gender }} </p>
 			<h5>Order Summary</h5>
-				<div class="box" v-for="burger in orderObj.checkedBurgers" v-if="burger.stock > 0"></div>
+					<ul v-for="burger in orderObj.checkedBurgers">
+						<li>{{burger}}</li>
+					</ul>
 
 		</section>
 
