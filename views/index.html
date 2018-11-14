@@ -58,22 +58,18 @@
 					<p>
 						<label for="fullname">Full name</label><br>
 						<input v-model="orderObj.name"type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
-						{{ orderObj.name }}
 					</p>
 					<p>
 						<label for="email">Email</label><br>
 						<input v-model="orderObj.email" type="email" id="email" name="em" required="required" placeholder="E-mail address">
-						{{ orderObj.email }}
 					</p>
 					<p>
 						<label for="Street">Street</label><br>
 						<input v-model="orderObj.street" type="text" id="street" name="ln" placeholder="Street name">
-						{{ orderObj.street }}
 					</p>
 					<p>
 						<label for="House">House</label><br>
 						<input v-model="orderObj.houseNumber" type="number" id="house" name="ln" placeholder="House number">
-						{{ orderObj.houseNumber }}
 					</p>
 					<p>
 						<label for="recipient">Recipient</label><br>
@@ -83,12 +79,10 @@
 							<option>Debit</option>
 							<option>Split</option>
 						</select>
-						{{ orderObj.payment }}
 					</p>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Male" checked>Male<br>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Female">Female<br>
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Undisclosed">Undisclosed<br>
-					{{ orderObj.gender }}
 					<div id="orders">
 						<button v-on:click="markDone('string')">Order</button>
 					</div>
@@ -97,14 +91,15 @@
 		</section>
 
 		<section v-if="recievedOrder === true">
-			<!--h4>Order Confirmation</h4>
+			<h4>Order Confirmation</h4>
 			<h5>Customer Details</h5>
-				Name: {{}}
-				Email: {{}}
-				Deliver to {{}} {{}}
-				Payment Method {{}}
-				Gender: {{}}
-			<h5>Order Summary</h5-->
+			<!-- Give ID's and change them to a one-way binding using native JS-->
+				<p>Name: {{ orderObj.name }} </p>
+				<p>Email: {{ orderObj.email }} </p>
+				<p>Deliver to: {{ orderObj.houseNumber }} {{ orderObj.street }} </p>
+				<p>Payment Method: {{ orderObj.payment }} </p>
+				<p>Gender: {{ orderObj.gender }} </p>
+			<h5>Order Summary</h5>
 		</section>
 
 		<div class="view-box">
