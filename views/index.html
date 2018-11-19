@@ -83,7 +83,7 @@
 					<input v-model="orderObj.gender" type="radio" name="gender" value="Undisclosed">Undisclosed<br>
 
 					<div class="view-box">
-						<div id="dots" v-on:click="displayOrder">
+						<div id="dots" v-on:click="addOrder">
 							<div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
 								{{key}}
 							</div>
