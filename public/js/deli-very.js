@@ -15,7 +15,7 @@ var vm = new Vue({
     orderObj: {
       name: '',
       email: '',
-      gender: 'Undisclosed', 
+      gender: 'Undisclosed',
       payment: 'Credit',
       checkedBurgers: []
     },
@@ -32,40 +32,55 @@ var vm = new Vue({
     }.bind(this));
   },
   methods: {
-    markDone: function() {
+    markDone: function () {
       console.log(this.orderObj)
-     },    
- 
-     handleSubmit() {
-        if(this.orderObj.checkedBurgers.length === 0){
-          console.log("Select at least one burger.")
-          alert("Select at least one burger.")
-          event.preventDefault();
-          return false;
-        }
-         console.log("The User Name is: " + this.orderObj.name);
-         console.log("Order placed.");
-         this.recievedOrder = true;  
-     },
+    },
+
+    handleSubmit() {
+      if (this.orderObj.checkedBurgers.length === 0) {
+        console.log("Select at least one burger.")
+        alert("Select at least one burger.")
+        event.preventDefault();
+        return false;
+      }
+      console.log("The User Name is: " + this.orderObj.name);
+      console.log("Order placed.");
+      this.recievedOrder = true;
+    },
     getNext: function () {
       var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
         return Math.max(last, next);
       }, 0);
       return lastOrder + 1;
     },
-    displayOrder: function(event){
+    displayOrder: function (event) {
       this.markDone();
-      this.addOrder(event);
-      console.log("display order");
+      var offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top
+      };
+      socket.emit("addOrder", {
+        orderId: 'T',
+        details: {
+          x: event.clientX - 10 - offset.x,
+          y: event.clientY - 10 - offset.y
+        }
+      });
+
     },
     addOrder: function (event) {
-      var offset = {x: event.currentTarget.getBoundingClientRect().left,
-                    y: event.currentTarget.getBoundingClientRect().top};
-      socket.emit("addOrder", { orderId: this.getNext(),
-                                details: { x: event.clientX - 10 - offset.x,
-                                           y: event.clientY - 10 - offset.y },
-                                orderItems: ["Beans", "Curry"]
-                              });
+      var offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top
+      };
+      socket.emit("addOrder", {
+        orderId: this.getNext(),
+        details: {
+          x: event.clientX - 10 - offset.x,
+          y: event.clientY - 10 - offset.y
+        },
+        orderItems: ["Beans", "Curry"]
+      });
     }
   }
 });
