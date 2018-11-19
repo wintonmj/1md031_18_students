@@ -79,7 +79,8 @@ var vm = new Vue({
           x: this.orderObj.x,
           y: this.orderObj.y
         },
-        orderItems: this.orderObj.checkedBurgers
+        orderItems: this.orderObj.checkedBurgers,
+        userInfo: this.userDetails
       });
       console.log("Order Added"); 
     }
