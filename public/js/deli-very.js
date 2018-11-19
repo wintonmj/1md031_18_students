@@ -15,13 +15,15 @@ var vm = new Vue({
     recievedOrder: false,
     orders: {},
     orderObj: {
+      checkedBurgers: [],
+      x: 0,
+      y: 0
+    }, 
+    userDetails: {
       name: '',
       email: '',
       gender: 'Undisclosed',
       payment: 'Credit',
-      checkedBurgers: [],
-      x: 0,
-      y: 0
     }
   },
   created: function () {
@@ -66,11 +68,11 @@ var vm = new Vue({
     },
 
     addOrder: function () {
-      console.log(
-        "Now adding the order \n The orderID is: " + this.getNext() + 
-        "\n the details are " + this.orderObj.x + " and " + this.orderObj.y + 
-        "\n the order is " + this.orderObj.checkedBurgers  
-      );
+      // console.log(
+      //   "Now adding the order \n The orderID is: " + this.getNext() + 
+      //   "\n the details are " + this.orderObj.x + " and " + this.orderObj.y + 
+      //   "\n the order is " + this.orderObj.checkedBurgers  
+      // );
       socket.emit("addOrder", {
         orderId: this.getNext(),
         details: {
