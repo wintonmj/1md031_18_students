@@ -57,8 +57,8 @@ button:hover{
 
 section {
 	width: 80%;
-	margin: 2.5% auto;
-	padding: 2%;  
+	margin: auto auto;
+	padding: 0.5%;  
 }
 
 table {
@@ -87,7 +87,7 @@ h1 {
 
 .view-box {
 	width: 90%;
-	height: 50vh;
+	height: 300px;
 	margin: 1em auto;
 	overflow: scroll;
 	border: 1px solid rgba(0,0,0,0.4);
