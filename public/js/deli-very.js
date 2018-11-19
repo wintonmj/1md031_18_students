@@ -77,10 +77,14 @@ var vm = new Vue({
       //console.log(orderID + " " + details + " " + orderItems);
     },
     addOrder: function (event) {
+      var offset = {
+        x: event.currentTarget.getBoundingClientRect().left,
+        y: event.currentTarget.getBoundingClientRect().top
+      };
       socket.emit("addOrder", { orderId: this.getNext(), 
-                                details: { x: event.clientX-10 - event.currentTarget.getBoundingClientRect().left, 
-                                           y: event.clientX-10 - event.currentTarget.getBoundingClientRect().top, },
-                                orderItems: orderObj.checkedBurgers,
+                                details: { x: event.clientX - 10 - offset.x, 
+                                           y: event.clientY - 10 - offset.y },
+                                orderItems: this.orderObj.checkedBurgers,
                               });
     }
   }
