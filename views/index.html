@@ -21,14 +21,14 @@
 			<h1 class="title-text"> Välkommen till Burger Online </h1>
 		</section>
 
-		<section class="burger-section" v-bind:title="burgerName" id="myID">
+		<section class="burger-section" v-bind:title="menuItems" id="myID">
 			<h2>
 				Select Burger
 			</h2>
 			<p>Here you can choose the burger you would like.</p>
 
 			<div class="wrapper">
-				<div class="box" v-for="burger in burgerName" v-if="burger.stock > 0">
+				<div class="box" v-for="burger in menuItems" v-if="burger.stock > 0">
 					<h4>
 						{{ burger.name }}
 					</h4>

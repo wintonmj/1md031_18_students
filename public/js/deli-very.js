@@ -11,6 +11,8 @@ var socket = io();
 var vm = new Vue({
   el: '#vue-container',
   data: {
+    menuItems: burgers,
+    recievedOrder: false,
     orders: {},
     orderObj: {
       name: '',
@@ -18,9 +20,7 @@ var vm = new Vue({
       gender: 'Undisclosed',
       payment: 'Credit',
       checkedBurgers: []
-    },
-    burgerName: burgers,
-    recievedOrder: false
+    }
   },
   created: function () {
     socket.on('initialize', function (data) {
@@ -59,6 +59,7 @@ var vm = new Vue({
         x: event.currentTarget.getBoundingClientRect().left,
         y: event.currentTarget.getBoundingClientRect().top
       };
+      
       socket.emit("addOrder", {
         orderId: 'T',
         details: {
@@ -67,20 +68,25 @@ var vm = new Vue({
         }
       });
 
+
+      //console.log(orderID + " " + details + " " + orderItems);
     },
     addOrder: function (event) {
-      var offset = {
+     /* var offset = {
         x: event.currentTarget.getBoundingClientRect().left,
         y: event.currentTarget.getBoundingClientRect().top
       };
+      */
       socket.emit("addOrder", {
         orderId: this.getNext(),
-        details: {
+        /*details: {
           x: event.clientX - 10 - offset.x,
           y: event.clientY - 10 - offset.y
-        },
-        orderItems: ["Beans", "Curry"]
+        },*/
+        details, 
+        orderItems: orderObj,
       });
+      //console.log(orderID + " " + details + " " + orderItems);
     }
   }
 });
