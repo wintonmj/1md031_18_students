@@ -63,7 +63,7 @@
 				<form @submit.prevent="handleSubmit">
 					<p>
 						<label for="fullname">Full name</label><br>
-						<input v-model="orderObj.name" type="text" id="fullname" name="fn" required="required" placeholder="Frist and last name">
+						<input v-model="orderObj.name" type="text" id="fullname" name="fn" required="required" placeholder="First and last name">
 					</p>
 					<p>
 						<label for="email">Email</label><br>
@@ -103,7 +103,6 @@
 			<!-- Give ID's and change them to a one-way binding using native JS-->
 			<p>Name: {{ orderObj.name }} </p>
 			<p>Email: {{ orderObj.email }} </p>
-			<p>Deliver to: {{ orderObj.houseNumber }} {{ orderObj.street }} </p>
 			<p>Payment Method: {{ orderObj.payment }} </p>
 			<p>Gender: {{ orderObj.gender }} </p>
 			<h5>Order Summary</h5>

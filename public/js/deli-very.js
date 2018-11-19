@@ -39,6 +39,7 @@ var vm = new Vue({
      handleSubmit() {
         if(this.orderObj.checkedBurgers.length === 0){
           console.log("Select at least one burger.")
+          alert("Select at least one burger.")
           event.preventDefault();
           return false;
         }
@@ -53,7 +54,8 @@ var vm = new Vue({
       return lastOrder + 1;
     },
     displayOrder: function(event){
-      this.markDone()
+      this.markDone();
+      this.addOrder(event);
       console.log("display order");
     },
     addOrder: function (event) {
