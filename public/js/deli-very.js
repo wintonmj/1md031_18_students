@@ -19,7 +19,9 @@ var vm = new Vue({
       email: '',
       gender: 'Undisclosed',
       payment: 'Credit',
-      checkedBurgers: []
+      checkedBurgers: [], 
+      x: 0, 
+      y: 0
     }
   },
   created: function () {
@@ -59,12 +61,15 @@ var vm = new Vue({
         x: event.currentTarget.getBoundingClientRect().left,
         y: event.currentTarget.getBoundingClientRect().top
       };
+
+      this.orderObj.x = event.clientX - 10 - offset.x;
+      this.orderObj.y = event.clientY - 10 - offset.y;
       
       socket.emit("addOrder", {
         orderId: 'T',
         details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y
+          x: this.orderObj.x, 
+          y: this.orderObj.y
         }
       });
 
@@ -72,21 +77,11 @@ var vm = new Vue({
       //console.log(orderID + " " + details + " " + orderItems);
     },
     addOrder: function (event) {
-     /* var offset = {
-        x: event.currentTarget.getBoundingClientRect().left,
-        y: event.currentTarget.getBoundingClientRect().top
-      };
-      */
-      socket.emit("addOrder", {
-        orderId: this.getNext(),
-        /*details: {
-          x: event.clientX - 10 - offset.x,
-          y: event.clientY - 10 - offset.y
-        },*/
-        details, 
-        orderItems: orderObj,
-      });
-      //console.log(orderID + " " + details + " " + orderItems);
+      socket.emit("addOrder", { orderId: this.getNext(), 
+                                details: { x: event.clientX-10 - event.currentTarget.getBoundingClientRect().left, 
+                                           y: event.clientX-10 - event.currentTarget.getBoundingClientRect().top, },
+                                orderItems: orderObj.checkedBurgers,
+                              });
     }
   }
 });
