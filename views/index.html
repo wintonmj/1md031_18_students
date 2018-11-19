@@ -101,10 +101,10 @@
 			<h4>Order Confirmation</h4>
 			<h5>Customer Details</h5>
 			<!-- Give ID's and change them to a one-way binding using native JS-->
-			<p>Name: {{ orderObj.name }} </p>
-			<p>Email: {{ orderObj.email }} </p>
-			<p>Payment Method: {{ orderObj.payment }} </p>
-			<p>Gender: {{ orderObj.gender }} </p>
+			<p>Name: {{ userDetails.name }} </p>
+			<p>Email: {{ userDetails.email }} </p>
+			<p>Payment Method: {{ userDetails.payment }} </p>
+			<p>Gender: {{ userDetails.gender }} </p>
 			<h5>Order Summary</h5>
 			<ul v-for="burger in orderObj.checkedBurgers">
 				<li>{{burger}}</li>
